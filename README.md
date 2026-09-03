@@ -30,14 +30,14 @@ assets/images/       ضعي صور المنتجات هنا
 افتحي `js/products.js` وعدّلي القائمة. مثال منتج:
 
 ```js
-{ id: 17, name: "اسم المنتج", cat: "kaftan", price: 900, old: 1100,
-  tag: "جديد", img: "assets/images/photo.jpg", desc: "الوصف" }
+{ id: 26, name: "اسم المنتج", cat: "chrrabat", price: 250, old: 300,
+  tag: "جديد", img: "assets/images/tradi-26.jpg", desc: "الوصف" }
 ```
 
-- `cat`: التصنيف (`kaftan` / `accessoires` / `khotoba` / `tissus`)
+- `cat`: التصنيف (`chrrabat` شرّابات / `tissus` أقمشة / `khotoba` خطوبة وحلي / `accessoires` إكسسوارات)
 - `price`: السعر بالدرهم — `old`: السعر قبل التخفيض (اختياري)
 - `tag`: شارة مثل "جديد" أو "تخفيض" (اختياري)
-- `img`: مسار الصورة. اتركيه `""` لعرض قالب ملوّن بدل الصورة.
+- `img`: مسار الصورة (الصور الحالية `assets/images/tradi-01.jpg` … `tradi-25.jpg`). اتركيه `""` لعرض قالب ملوّن.
 
 ### 2. أرقام التواصل
 - **رقم واتساب للطلبات**: غيّري `WHATSAPP_NUMBER` في أعلى `js/main.js`

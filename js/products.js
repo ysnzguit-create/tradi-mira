@@ -1,53 +1,38 @@
 /* ===== Tradi Mira — Product catalogue =====
-   To add a real photo: set  img: "assets/images/your-photo.jpg"
-   Leave img empty ("") to show a colored placeholder tile.
-   Prices are in Moroccan Dirham (د.م). Edit freely. */
+   Photos are wired to assets/images/tradi-NN.jpg
+   Edit names / prices / tags freely. Prices in Moroccan Dirham (د.م). */
 
 const CATEGORIES = [
-  { id: "kaftan",   name: "قفاطين وتكاشط",   icon: "👗", color: "linear-gradient(160deg,#e94f6b,#f0a04b)" },
-  { id: "accessoires", name: "إكسسوارات",     icon: "💎", color: "linear-gradient(160deg,#2ec4b6,#118a7e)" },
-  { id: "khotoba",  name: "لوازم الخطوبة",    icon: "💍", color: "linear-gradient(160deg,#d4a53a,#b8860b)" },
-  { id: "tissus",   name: "أقمشة وحرير",      icon: "🧵", color: "linear-gradient(160deg,#8e7cc3,#5b4a9c)" },
+  { id: "chrrabat",    name: "شرّابات وزينة الحايك", icon: "🎀", color: "linear-gradient(160deg,#e94f6b,#f0a04b)" },
+  { id: "tissus",      name: "أقمشة وحايك",         icon: "🧵", color: "linear-gradient(160deg,#8e7cc3,#5b4a9c)" },
+  { id: "khotoba",     name: "لوازم الخطوبة والحلي", icon: "💍", color: "linear-gradient(160deg,#d4a53a,#b8860b)" },
+  { id: "accessoires", name: "إكسسوارات وخلائل",    icon: "💎", color: "linear-gradient(160deg,#2ec4b6,#118a7e)" },
 ];
 
 const PRODUCTS = [
-  // --- Kaftans & traditional dresses ---
-  { id: 1, name: "قفطان أصفر مطرّز بلمسة أمازيغية", cat: "kaftan", price: 1200, old: 1500, tag: "الأكثر مبيعاً", img: "", ph: "👗", color:"linear-gradient(160deg,#f0c419,#d4a53a)",
-    desc: "قفطان فاخر بتطريز يدوي وألوان دافئة، مثالي للمناسبات." },
-  { id: 2, name: "تكشيطة تقليدية بالخيط الذهبي", cat: "kaftan", price: 1650, old: null, tag: "جديد", img: "", ph: "👘", color:"linear-gradient(160deg,#6d214f,#b33771)",
-    desc: "تكشيطة راقية بتفاصيل ذهبية وحزام مطرّز." },
-  { id: 3, name: "فستان أمازيغي احتفالي", cat: "kaftan", price: 980, old: 1200, tag: null, img: "", ph: "👗", color:"linear-gradient(160deg,#2ec4b6,#0e6ea0)",
-    desc: "فستان ملوّن بنقوش أمازيغية أصيلة للحفلات." },
-  { id: 4, name: "جلابة نسائية مطرّزة", cat: "kaftan", price: 750, old: null, tag: null, img: "", ph: "🧥", color:"linear-gradient(160deg,#e94f6b,#c0392b)",
-    desc: "جلابة أنيقة بخامة مريحة وتطريز يدوي دقيق." },
-
-  // --- Accessories ---
-  { id: 5, name: "طقم إكسسوارات بالصنج والخيوط الأخضر", cat: "accessoires", price: 320, old: 400, tag: "الأكثر مبيعاً", img: "assets/images/p5-accessoires.jpg", ph: "💎", color:"linear-gradient(160deg,#16a085,#f0a04b)",
-    desc: "طقم زينة تقليدي بخيوط خضراء وصنج ذهبي وقماش مزركش." },
-  { id: 6, name: "شربات (خيوط زينة) ملوّنة", cat: "accessoires", price: 140, old: null, tag: null, img: "", ph: "🎀", color:"linear-gradient(160deg,#2ec4b6,#e94f6b)",
-    desc: "خيوط زينة أمازيغية متعددة الألوان للتزيين." },
-  { id: 7, name: "حزام مطرّز بالصنج الذهبي", cat: "accessoires", price: 260, old: 320, tag: null, img: "", ph: "🧣", color:"linear-gradient(160deg,#d4a53a,#8e6c1a)",
-    desc: "حزام تقليدي يبرز جمال القفطان والتكشيطة." },
-  { id: 8, name: "طقم زينة وردي بالصنج", cat: "accessoires", price: 300, old: null, tag: "جديد", img: "", ph: "🌸", color:"linear-gradient(160deg,#f78fb3,#e94f6b)",
-    desc: "طقم ناعم بلون وردي وتفاصيل لامعة." },
-
-  // --- Engagement / wedding ---
-  { id: 9, name: "طقم الخطوبة الفاخر بلمسة أمازيغية", cat: "khotoba", price: 850, old: 1000, tag: "مميز", img: "", ph: "💍", color:"linear-gradient(160deg,#d4a53a,#b8860b)",
-    desc: "طقم متكامل لتزيين صينية الخطوبة بأناقة." },
-  { id: 10, name: "زينة كؤوس العروس (القطعة)", cat: "khotoba", price: 90, old: null, tag: null, img: "assets/images/p10-zina-kous.jpg", ph: "🥂", color:"linear-gradient(160deg,#c0392b,#8e2216)",
-    desc: "زينة يدوية للكؤوس بألوان الراية الأمازيغية الأصيلة." },
-  { id: 11, name: "سلة هدايا مزيّنة تقليدية", cat: "khotoba", price: 420, old: 520, tag: null, img: "", ph: "🎁", color:"linear-gradient(160deg,#e67e22,#d4a53a)",
-    desc: "سلة أنيقة مزيّنة بالخيوط والصنج للمناسبات." },
-  { id: 12, name: "خنجر تقليدي مع حبال ذهبية وحمراء", cat: "khotoba", price: 680, old: null, tag: "حصري", img: "assets/images/p12-khanjar.jpg", ph: "🗡️", color:"linear-gradient(160deg,#7f8c8d,#2c3e50)",
-    desc: "خنجر مغربي تقليدي بمقبض منقوش مع حبال وشراشيب ذهبية وحمراء." },
-
-  // --- Fabrics ---
-  { id: 13, name: "قماش حرير بنقوش ذهبية", cat: "tissus", price: 220, old: 280, tag: "تخفيض", img: "", ph: "🧵", color:"linear-gradient(160deg,#5b4a9c,#8e7cc3)",
-    desc: "قماش فاخر بلمعة ذهبية للخياطة الراقية (المتر)." },
-  { id: 14, name: "حايك تقليدي أحمر بالخيوط الملوّنة", cat: "tissus", price: 190, old: null, tag: null, img: "assets/images/p14-hayk-ahmar.jpg", ph: "🪡", color:"linear-gradient(160deg,#c0392b,#e67e22)",
-    desc: "حايك أمازيغي أصيل بخطوط ملوّنة وشراشيب يدوية (القطعة)." },
-  { id: 15, name: "قماش رمادي مطرّز بالترتر", cat: "tissus", price: 240, old: 290, tag: "جديد", img: "assets/images/p15-tissu-gris.jpg", ph: "✨", color:"linear-gradient(160deg,#7f8c9b,#b0bec5)",
-    desc: "قماش شفاف فاخر مطرّز بالترتر اللامع ونقوش زهرية (المتر)." },
-  { id: 16, name: "قماش تقليدي بخيوط ملوّنة", cat: "tissus", price: 175, old: 220, tag: null, img: "", ph: "🎨", color:"linear-gradient(160deg,#16a085,#d4a53a)",
-    desc: "قماش أمازيغي أصيل بخطوط وألوان تراثية (المتر)." },
+  { id: 1, name: "حايك أمازيغي ملوّن بالشراشيب", cat: "tissus", price: 450, old: null, tag: "الأكثر مبيعاً", img: "assets/images/tradi-01.jpg", ph: "🧵", color: "linear-gradient(160deg,#8e7cc3,#5b4a9c)", desc: "قماش/حايك تقليدي بجودة عالية." },
+  { id: 2, name: "قماش أورغانزا رمادي مطرّز بالترتر", cat: "tissus", price: 240, old: 290, tag: "جديد", img: "assets/images/tradi-02.jpg", ph: "🧵", color: "linear-gradient(160deg,#8e7cc3,#5b4a9c)", desc: "قماش/حايك تقليدي بجودة عالية." },
+  { id: 3, name: "خنجر مغربي تقليدي بشرّابة حمراء", cat: "khotoba", price: 680, old: null, tag: "حصري", img: "assets/images/tradi-03.jpg", ph: "💍", color: "linear-gradient(160deg,#d4a53a,#b8860b)", desc: "قطعة تقليدية فاخرة للمناسبات والهدايا." },
+  { id: 4, name: "حايك أصفر بالخيوط التقليدية", cat: "tissus", price: 380, old: null, tag: null, img: "assets/images/tradi-04.jpg", ph: "🧵", color: "linear-gradient(160deg,#8e7cc3,#5b4a9c)", desc: "قماش/حايك تقليدي بجودة عالية." },
+  { id: 5, name: "شرّابة ذهبية فاخرة", cat: "chrrabat", price: 180, old: null, tag: null, img: "assets/images/tradi-05.jpg", ph: "🎀", color: "linear-gradient(160deg,#e94f6b,#f0a04b)", desc: "طقم شرّابات وزينة يدوية للحايك والقفطان." },
+  { id: 6, name: "طقم إكسسوارات برتقالي بالشراشيب", cat: "chrrabat", price: 220, old: null, tag: "جديد", img: "assets/images/tradi-06.jpg", ph: "🎀", color: "linear-gradient(160deg,#e94f6b,#f0a04b)", desc: "طقم شرّابات وزينة يدوية للحايك والقفطان." },
+  { id: 7, name: "طقم قماش مع خلالة ذهبية أمازيغية", cat: "accessoires", price: 320, old: null, tag: null, img: "assets/images/tradi-07.jpg", ph: "💎", color: "linear-gradient(160deg,#2ec4b6,#118a7e)", desc: "إكسسوار أمازيغي أصيل بصناعة يدوية." },
+  { id: 8, name: "حقيبة يد مطرّزة حمراء بالرموز الأمازيغية", cat: "accessoires", price: 260, old: null, tag: "مميز", img: "assets/images/tradi-08.jpg", ph: "💎", color: "linear-gradient(160deg,#2ec4b6,#118a7e)", desc: "إكسسوار أمازيغي أصيل بصناعة يدوية." },
+  { id: 9, name: "عقد الكهرمان التقليدي", cat: "khotoba", price: 550, old: 650, tag: null, img: "assets/images/tradi-09.jpg", ph: "💍", color: "linear-gradient(160deg,#d4a53a,#b8860b)", desc: "قطعة تقليدية فاخرة للمناسبات والهدايا." },
+  { id: 10, name: "طقم شرّابات وردي بالصنج", cat: "chrrabat", price: 240, old: null, tag: null, img: "assets/images/tradi-10.jpg", ph: "🎀", color: "linear-gradient(160deg,#e94f6b,#f0a04b)", desc: "طقم شرّابات وزينة يدوية للحايك والقفطان." },
+  { id: 11, name: "طقم شرّابات فيروزي", cat: "chrrabat", price: 240, old: null, tag: null, img: "assets/images/tradi-11.jpg", ph: "🎀", color: "linear-gradient(160deg,#e94f6b,#f0a04b)", desc: "طقم شرّابات وزينة يدوية للحايك والقفطان." },
+  { id: 12, name: "طقم شرّابات سماوي", cat: "chrrabat", price: 240, old: null, tag: null, img: "assets/images/tradi-12.jpg", ph: "🎀", color: "linear-gradient(160deg,#e94f6b,#f0a04b)", desc: "طقم شرّابات وزينة يدوية للحايك والقفطان." },
+  { id: 13, name: "طقم شرّابات ذهبي", cat: "chrrabat", price: 260, old: null, tag: "الأكثر مبيعاً", img: "assets/images/tradi-13.jpg", ph: "🎀", color: "linear-gradient(160deg,#e94f6b,#f0a04b)", desc: "طقم شرّابات وزينة يدوية للحايك والقفطان." },
+  { id: 14, name: "طقم شرّابات فوشيا بالصنج", cat: "chrrabat", price: 250, old: null, tag: null, img: "assets/images/tradi-14.jpg", ph: "🎀", color: "linear-gradient(160deg,#e94f6b,#f0a04b)", desc: "طقم شرّابات وزينة يدوية للحايك والقفطان." },
+  { id: 15, name: "طقم شرّابات وردي فاتح", cat: "chrrabat", price: 240, old: null, tag: null, img: "assets/images/tradi-15.jpg", ph: "🎀", color: "linear-gradient(160deg,#e94f6b,#f0a04b)", desc: "طقم شرّابات وزينة يدوية للحايك والقفطان." },
+  { id: 16, name: "طقم شرّابات ذهبي فاخر", cat: "chrrabat", price: 260, old: null, tag: null, img: "assets/images/tradi-16.jpg", ph: "🎀", color: "linear-gradient(160deg,#e94f6b,#f0a04b)", desc: "طقم شرّابات وزينة يدوية للحايك والقفطان." },
+  { id: 17, name: "شرّابات متعددة الألوان (بوكيه)", cat: "chrrabat", price: 160, old: null, tag: "جديد", img: "assets/images/tradi-17.jpg", ph: "🎀", color: "linear-gradient(160deg,#e94f6b,#f0a04b)", desc: "طقم شرّابات وزينة يدوية للحايك والقفطان." },
+  { id: 18, name: "زينة كؤوس العروس بألوان الراية", cat: "khotoba", price: 90, old: null, tag: null, img: "assets/images/tradi-18.jpg", ph: "💍", color: "linear-gradient(160deg,#d4a53a,#b8860b)", desc: "قطعة تقليدية فاخرة للمناسبات والهدايا." },
+  { id: 19, name: "عقد الكهرمان بالشراشيب الحمراء", cat: "khotoba", price: 600, old: null, tag: null, img: "assets/images/tradi-19.jpg", ph: "💍", color: "linear-gradient(160deg,#d4a53a,#b8860b)", desc: "قطعة تقليدية فاخرة للمناسبات والهدايا." },
+  { id: 20, name: "قماش أبيض مطرّز بحاشية ذهبية", cat: "tissus", price: 300, old: null, tag: null, img: "assets/images/tradi-20.jpg", ph: "🧵", color: "linear-gradient(160deg,#8e7cc3,#5b4a9c)", desc: "قماش/حايك تقليدي بجودة عالية." },
+  { id: 21, name: "خلالة فضية أمازيغية بالحلي", cat: "accessoires", price: 450, old: null, tag: "حصري", img: "assets/images/tradi-21.jpg", ph: "💎", color: "linear-gradient(160deg,#2ec4b6,#118a7e)", desc: "إكسسوار أمازيغي أصيل بصناعة يدوية." },
+  { id: 22, name: "قماش برتقالي شفاف بخطوط ذهبية", cat: "tissus", price: 190, old: null, tag: null, img: "assets/images/tradi-22.jpg", ph: "🧵", color: "linear-gradient(160deg,#8e7cc3,#5b4a9c)", desc: "قماش/حايك تقليدي بجودة عالية." },
+  { id: 23, name: "قماش أخضر مطرّز بنقوش أمازيغية", cat: "tissus", price: 210, old: null, tag: null, img: "assets/images/tradi-23.jpg", ph: "🧵", color: "linear-gradient(160deg,#8e7cc3,#5b4a9c)", desc: "قماش/حايك تقليدي بجودة عالية." },
+  { id: 24, name: "حايك بنفسجي مقلّم بالشراشيب", cat: "tissus", price: 420, old: null, tag: null, img: "assets/images/tradi-24.jpg", ph: "🧵", color: "linear-gradient(160deg,#8e7cc3,#5b4a9c)", desc: "قماش/حايك تقليدي بجودة عالية." },
+  { id: 25, name: "طقم شرّابات عنابي بالصنج", cat: "chrrabat", price: 250, old: null, tag: null, img: "assets/images/tradi-25.jpg", ph: "🎀", color: "linear-gradient(160deg,#e94f6b,#f0a04b)", desc: "طقم شرّابات وزينة يدوية للحايك والقفطان." },
 ];
