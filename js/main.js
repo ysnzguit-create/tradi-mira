@@ -64,8 +64,24 @@
   }
 
   /* ---------- Render products ---------- */
+  // If a real photo fails to load (not uploaded yet), fall back to the coloured tile.
+  window.tmImgError = function (img) {
+    const d = document.createElement("div");
+    d.className = "product__img ph";
+    d.style.background = img.dataset.color || "#124b65";
+    d.textContent = img.dataset.ph || "🛍️";
+    img.replaceWith(d);
+  };
+  window.tmCartImgError = function (img) {
+    const d = document.createElement("div");
+    d.className = "cart-item__img ph";
+    d.style.cssText = "background:" + (img.dataset.color || "#124b65") + ";font-size:1.6rem;display:grid;place-items:center";
+    d.textContent = img.dataset.ph || "🛍️";
+    img.replaceWith(d);
+  };
   function productMedia(p) {
-    if (p.img) return `<img class="product__img" src="${p.img}" alt="${p.name}" loading="lazy">`;
+    if (p.img) return `<img class="product__img" src="${p.img}" alt="${p.name}"
+      data-ph="${p.ph || "🛍️"}" data-color="${p.color || "#124b65"}" onerror="tmImgError(this)">`;
     return `<div class="product__img ph" style="background:${p.color || "#124b65"}">${p.ph || "🛍️"}</div>`;
   }
   function renderProducts() {
@@ -133,7 +149,8 @@
         const p = findProduct(+id); if (!p) return "";
         const q = cart[id];
         const media = p.img
-          ? `<img class="cart-item__img" src="${p.img}" alt="${p.name}">`
+          ? `<img class="cart-item__img" src="${p.img}" alt="${p.name}"
+              data-ph="${p.ph || "🛍️"}" data-color="${p.color}" onerror="tmCartImgError(this)">`
           : `<div class="cart-item__img ph" style="background:${p.color};font-size:1.6rem;display:grid;place-items:center">${p.ph || "🛍️"}</div>`;
         return `
           <div class="cart-item">
@@ -145,9 +162,9 @@
                 <button class="qty-btn" data-dec="${id}" aria-label="إنقاص">−</button>
                 <span class="cart-item__qty">${q}</span>
                 <button class="qty-btn" data-inc="${id}" aria-label="زيادة">+</button>
-                <button class="cart-item__remove" data-rm="${id}">حذف</button>
               </div>
             </div>
+            <button class="cart-item__remove" data-rm="${id}" aria-label="حذف ${p.name}" title="حذف">✕</button>
           </div>`;
       }).join("");
       $$("[data-inc]", body).forEach((b) => b.addEventListener("click", () => setQty(+b.dataset.inc, cart[b.dataset.inc] + 1)));
@@ -175,6 +192,7 @@
   const overlay = $("#cartOverlay");
   function openCart() { drawer.classList.add("open"); overlay.classList.add("open"); }
   function closeCart() { drawer.classList.remove("open"); overlay.classList.remove("open"); }
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeCart(); });
 
   /* ---------- Small UX helpers ---------- */
   let toastTimer;
